@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "gateway-api-deployment"
+  namespace: "apollo-federation-dev"
+spec:
+  selector:
+    matchLabels:
+      app: "gateway-api"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: "gateway-api"
+    spec:
+      containers:
+      - image: maisonam/gateway-api:0.2
+        imagePullPolicy: Always
+        name: "gateway-api"
+        ports:
+        - containerPort: 4000

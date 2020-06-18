@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "wallet-api-deployment"
+  namespace: "apollo-federation-dev"
+spec:
+  selector:
+    matchLabels:
+      app: "wallet-api"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: "wallet-api"
+    spec:
+      containers:
+      - image: maisonam/wallet-api:0.1
+        imagePullPolicy: Always
+        name: "wallet-api"
+        ports:
+        - containerPort: 5002

@@ -1,0 +1,32 @@
+{
+  "name": "gateway",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start-gateway": "babel-node gateway.js",
+    "start-service-user-api": "babel-node services/user-api/server/index.js",
+    "start-service-wallet-api": "babel-node services/wallet-api/server/index.js",
+    "start-service-cryptocurrency-api": "babel-node services/cryptocurrency-api/server/index.js",
+    "start-services": "concurrently \"npm:start-service-*\"",
+    "build": "babel gateway.js -d dist",
+    "start": "node dist/gateway.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.10.2",
+    "concurrently": "latest"
+  },
+  "dependencies": {
+    "@apollo/gateway": "0.13.2",
+    "apollo-server": "2.11.0",
+    "dotenv": "^8.2.0",
+    "graphql": "14.6.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

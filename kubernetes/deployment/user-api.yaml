@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "user-api-deployment"
+  namespace: "apollo-federation-dev"
+spec:
+  selector:
+    matchLabels:
+      app: "user-api"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: "user-api"
+    spec:
+      containers:
+      - image: maisonam/user-api:0.1
+        imagePullPolicy: Always
+        name: "user-api"
+        ports:
+        - containerPort: 5001

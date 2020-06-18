@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: alb-ingress-controller
+  name: alb-ingress-controller
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: alb-ingress-controller
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: alb-ingress-controller
+    spec:
+      containers:
+        - name: alb-ingress-controller
+          args:
+            - --ingress-class=alb
+            - --cluster-name=apollo-federation-eks
+            - --aws-vpc-id= #PASTE YOUR VPC ID HERE#
+            - --aws-region=eu-west-1
+
+          env:
+            # This is only here for example. It's recommended you instead use
+            # a project like kube2iam for granting access.
+            - name: AWS_ACCESS_KEY_ID
+              value: #PASTE YOUR AWS_ACCESS_KEY_ID HERE#
+
+            # This is only here for example. It's recommended you instead use
+            # a project like kube2iam for granting access.
+            - name: AWS_SECRET_ACCESS_KEY
+              value: #PASTE YOUR AWS_SECRET_ACCESS_KEY HERE#
+          image: docker.io/amazon/aws-alb-ingress-controller:v1.1.6
+      serviceAccountName: alb-ingress-controller

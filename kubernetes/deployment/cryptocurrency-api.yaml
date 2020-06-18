@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "cryptocurrency-api-deployment"
+  namespace: "apollo-federation-dev"
+spec:
+  selector:
+    matchLabels:
+      app: "cryptocurrency-api"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: "cryptocurrency-api"
+    spec:
+      containers:
+      - image: maisonam/cryptocurrency-api:0.1
+        imagePullPolicy: Always
+        name: "cryptocurrency-api"
+        ports:
+        - containerPort: 5003
+        env:
+        - name: COINMARKETCAP_API_KEY
+          value: #PASTE YOUR API KEY HERE#  
