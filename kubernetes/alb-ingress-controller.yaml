@@ -19,8 +19,8 @@ spec:
           args:
             - --ingress-class=alb
             - --cluster-name=apollo-federation-eks
-            - --aws-vpc-id= #PASTE YOUR VPC ID HERE#
-            - --aws-region=eu-west-1
+            - --aws-vpc-id=#PASTE YOUR VPC ID HERE#
+            - --aws-region=#PASTE YOUR AWS REGION HERE#
 
           env:
             # This is only here for example. It's recommended you instead use
