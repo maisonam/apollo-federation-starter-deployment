@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@apollo/federation": "^0.16.0",
-    "apollo-server": "^2.13.1"
+    "apollo-server": "^2.25.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
